@@ -6,10 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Sport implements Serializable{
@@ -18,11 +18,13 @@ public class Sport implements Serializable{
 	private Long id;
 	private String name;
 	private Long level;
-	
-	@ManyToMany(mappedBy="sports")
-	private Collection<Person> persons;
-	@ManyToMany(mappedBy="sports")
+
+	@ManyToMany
 	private Collection<Locality> locality;
+	
+	@ManyToMany(mappedBy ="sports")
+	private Collection<Person> person;
+	
 	
 	public Sport() {
 		super();
@@ -34,7 +36,6 @@ public class Sport implements Serializable{
 		super();
 		this.name = name;
 		this.level = level;
-		this.persons = persons;
 		this.locality = locality;
 	}
 
@@ -72,20 +73,7 @@ public class Sport implements Serializable{
 		this.level = level;
 	}
 
-
-	@JsonIgnore
-	public Collection<Person> getPersons() {
-		return persons;
-	}
-
-
 	
-	public void setPersons(Collection<Person> persons) {
-		this.persons = persons;
-	}
-
-
-	@JsonIgnore
 	public Collection<Locality> getLocality() {
 		return locality;
 	}
@@ -94,6 +82,18 @@ public class Sport implements Serializable{
 
 	public void setLocality(Collection<Locality> locality) {
 		this.locality = locality;
+	}
+
+
+	@JsonIgnore //pour personne
+	public Collection<Person> getPerson() {
+		return person;
+	}
+
+
+
+	public void setPerson(Collection<Person> person) {
+		this.person = person;
 	}
 
 

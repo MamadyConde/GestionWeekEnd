@@ -11,35 +11,28 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
 @Entity
 public class Locality implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String city;
-	private String department;
-	private String region;
-	@ManyToMany
-	private Collection<Person> persons;
-	@ManyToMany
+	
+	@ManyToMany(mappedBy="locality")
 	private Collection<Sport> sports;
 	
 	public Locality() {
 		super();
 	}
 
-	
 
-	public Locality(String city, String department, String region, Collection<Person> persons,
-			Collection<Sport> sports) {
+	public Locality(String city, Collection<Sport> sports) {
 		super();
 		this.city = city;
-		this.department = department;
-		this.region = region;
-		this.persons = persons;
 		this.sports = sports;
 	}
-
 
 
 	public Long getId() {
@@ -64,53 +57,19 @@ public class Locality implements Serializable{
 		this.city = city;
 	}
 
-
-
-	public String getDepartment() {
-		return department;
-	}
-
-
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-
-
-	public String getRegion() {
-		return region;
-	}
-
-
-
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-
-	@JsonIgnore
-	public Collection<Person> getPersons() {
-		return persons;
-	}
-
-
-	
-	public void setPersons(Collection<Person> persons) {
-		this.persons = persons;
-	}
-
-
-	@JsonIgnore
+	@JsonIgnore //pour la personne
 	public Collection<Sport> getSports() {
 		return sports;
 	}
 
 
-
 	public void setSports(Collection<Sport> sports) {
 		this.sports = sports;
 	}
+
+
+	
+
 
 
 	

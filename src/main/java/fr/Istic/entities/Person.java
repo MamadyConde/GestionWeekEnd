@@ -3,7 +3,7 @@ package fr.Istic.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Person implements Serializable{
@@ -25,26 +25,20 @@ public class Person implements Serializable{
 	private String email;
 	
 	@ManyToMany
-
 	private Collection<Sport> sports;
-	
-	@ManyToMany
 
-	private Collection<Locality> locality;
 	
 	public Person() {
 		super();
 	}
 
 	
-	public Person(String firstname, String lastname, String email, Collection<Sport> sports,
-			Collection<Locality> locality) {
+	public Person(String firstname, String lastname, String email, Collection<Sport> sports) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.sports = sports;
-		this.locality = locality;
 	}
 
 
@@ -89,14 +83,7 @@ public class Person implements Serializable{
 	public void setSports(Collection<Sport> sports) {
 		this.sports = sports;
 	}
-	
-	public Collection<Locality> getLocality() {
-		return locality;
-	}
 
-	public void setLocality(Collection<Locality> locality) {
-		this.locality = locality;
-	}
 
 	
 	
