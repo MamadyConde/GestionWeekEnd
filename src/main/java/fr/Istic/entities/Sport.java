@@ -32,7 +32,7 @@ public class Sport implements Serializable{
 
 
 
-	public Sport(String name, Long level, Collection<Person> persons, Collection<Locality> locality) {
+	public Sport(String name, Long level, Collection<Locality> locality) {
 		super();
 		this.name = name;
 		this.level = level;
