@@ -17,7 +17,6 @@ public class Sport implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private Long level;
 
 	@ManyToMany
 	private Collection<Locality> locality;
@@ -32,10 +31,9 @@ public class Sport implements Serializable{
 
 
 
-	public Sport(String name, Long level, Collection<Locality> locality) {
+	public Sport(String name,Collection<Locality> locality) {
 		super();
 		this.name = name;
-		this.level = level;
 		this.locality = locality;
 	}
 
@@ -60,19 +58,6 @@ public class Sport implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
-	public Long getLevel() {
-		return level;
-	}
-
-
-
-	public void setLevel(Long level) {
-		this.level = level;
-	}
-
 	
 	public Collection<Locality> getLocality() {
 		return locality;
