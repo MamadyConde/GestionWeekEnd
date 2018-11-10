@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.Istic.Repository.PersonRepository;
+import fr.Istic.Repository.SportRepository;
 import fr.Istic.entities.Person;
+import fr.Istic.entities.Sport;
 
 @Service //pour que spring puisse la reconnaitre comme un bean-spring
 public class PersonMetierImpl implements PersonMetier {
 	@Autowired  //injection de dependance de l'interface PersonDao par spring
 	private PersonRepository personRepository;
+	@Autowired
+	private SportRepository sportRepository;
 	
 	@Override
 	public Person savePerson(Person p) {

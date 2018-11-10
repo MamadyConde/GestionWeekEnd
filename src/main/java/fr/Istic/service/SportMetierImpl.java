@@ -38,13 +38,13 @@ public class SportMetierImpl implements SportMetier{
 	}
 
 	@Override
-	public Sport getSportByid(long id) {
+	public Sport getSportByid(Long id) {
 		
 		return sportRepository.findById(id).get();
 	}
 
 	@Override
-	public void deleteSport(long id) {
+	public void deleteSport(Long id) {
 		sportRepository.delete(getSportByid(id));
 		
 	}

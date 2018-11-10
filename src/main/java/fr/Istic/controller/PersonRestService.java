@@ -46,8 +46,9 @@ public class PersonRestService {
 		return personMetier.getPersonByid(id);
 	}
 	@DeleteMapping(value="/Delete/{id}")
-	public void deletePerson( @PathVariable("id") Long id) {
+	public boolean deletePerson( @PathVariable("id") Long id) {
 		personMetier.deletePerson(id);
+		return true;
 	}
 	
 	

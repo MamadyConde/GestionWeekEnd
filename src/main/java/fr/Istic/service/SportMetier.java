@@ -8,6 +8,6 @@ public interface SportMetier {
 	public Sport saveSport(Sport s);
 	public List<Sport> listSport();
 	public Sport Update(Sport s);
-	public Sport getSportByid(long id);
-	public void deleteSport(long id);
+	public Sport getSportByid(Long id);
+	public void deleteSport(Long id);
 }

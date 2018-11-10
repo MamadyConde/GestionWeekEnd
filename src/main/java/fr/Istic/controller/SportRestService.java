@@ -17,8 +17,8 @@ import fr.Istic.entities.Sport;
 import fr.Istic.service.SportMetier;
 
 @RestController
-@RequestMapping("/Sport")
 @CrossOrigin("*")
+@RequestMapping("/Sport")
 public class SportRestService {
 	@Autowired
 	private SportMetier sportMetier;
@@ -26,6 +26,7 @@ public class SportRestService {
 	
 	@PostMapping(value="/Add")
 	public Sport saveSport(@RequestBody Sport s) {
+System.out.println("sssss "+s);
 		return sportMetier.saveSport(s);
 	}
 	@GetMapping(value="/List")
@@ -38,12 +39,13 @@ public class SportRestService {
 		return sportMetier.Update(s);
 	}
 	@GetMapping(value="/One/{id}")
-	public Sport getSportByid(@PathVariable long id) {
+	public Sport getSportByid(@PathVariable Long id) {
 		return sportMetier.getSportByid(id);
 	}
 	@DeleteMapping(value="/Delete/{id}")
-	public void deleteSport(@PathVariable long id) {
+	public boolean deleteSport(@PathVariable("id") Long id) {
 		sportMetier.deleteSport(id);
+		return true;
 	}
 
 }

@@ -91,7 +91,7 @@ public class Sport implements Serializable{
 	}
 
 
-
+	
 	public void setPerson(Collection<Person> person) {
 		this.person = person;
 	}
