@@ -30,8 +30,10 @@ public class PersonRestService {
 	}
 	@PostMapping(value="/Add")
 	public Person saveClient(@RequestBody Person p) {
+		 //personMetier.savePerson(p);
 		 personMetier.savePerson(p);
-		 return personMetier.savePerson(p);
+		 personMetier.addRoleToPerson(p.getEmail(), "USER");//par defaut role user
+		 return p;
 	}
 
 	

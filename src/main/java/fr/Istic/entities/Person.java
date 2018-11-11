@@ -1,15 +1,21 @@
 package fr.Istic.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 
@@ -22,7 +28,12 @@ public class Person implements Serializable{
 	private Long id;
 	private String firstname;
 	private String lastname;
+	@Column(unique=true)
 	private String email;
+	private String password;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	private Collection<PersRole> roles = new ArrayList<>();
 	
 	@ManyToMany
 	private Collection<Sport> sports;
@@ -38,6 +49,18 @@ public class Person implements Serializable{
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+		this.sports = sports;
+	}
+
+
+	public Person(String firstname, String lastname, String email, String password, Collection<PersRole> roles,
+			Collection<Sport> sports) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
 		this.sports = sports;
 	}
 
@@ -82,6 +105,26 @@ public class Person implements Serializable{
 
 	public void setSports(Collection<Sport> sports) {
 		this.sports = sports;
+	}
+
+	@JsonIgnore
+	public String getPassword() {
+		return password;
+	}
+
+	@JsonSetter
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public Collection<PersRole> getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(Collection<PersRole> roles) {
+		this.roles = roles;
 	}
 
 

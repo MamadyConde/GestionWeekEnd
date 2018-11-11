@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import fr.Istic.entities.Person;
 
 public interface PersonRepository extends JpaRepository<Person,Long>{
-	List<Person> findByEmail(String email);
+	List<Person> findByFirstname(String firstname);
     List<Person> findByLastname(String lastname);
     List<Person> findByEmailAndLastname(String email, String lastname);
+   public Person findByEmail(String email);
 
 }
