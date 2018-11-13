@@ -14,6 +14,8 @@ public interface PersonMetier {
 	public PersRole saveRole(PersRole role);
 	public void addRoleToPerson(String email, String roleName);
 	public Person findPersonByEmail(String email);
+	//public List<Person> listRole();
+
 
 	
 }

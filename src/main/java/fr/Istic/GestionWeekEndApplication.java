@@ -23,13 +23,13 @@ public class GestionWeekEndApplication implements CommandLineRunner{
 		SpringApplication.run(GestionWeekEndApplication.class, args);
 	}
 	@Bean
-	public BCryptPasswordEncoder getBCPE() {
+	public BCryptPasswordEncoder getBCPE() { 
 		return new BCryptPasswordEncoder();
 	}
 	@Override
 	public void run(String... args) throws Exception {
-		personMetier.savePerson(new Person("admin","admin","a@gmail","12",null,null));
-		personMetier.savePerson(new Person("user","user","u@gmail","12",null,null));
+		personMetier.savePerson(new Person("admin","admin","a@gmail","12",null));
+		personMetier.savePerson(new Person("user","user","u@gmail","12",null));
 		personMetier.saveRole(new PersRole("ADMIN"));
 		personMetier.saveRole(new PersRole("USER"));
 		personMetier.addRoleToPerson("a@gmail", "ADMIN");

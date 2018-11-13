@@ -44,12 +44,13 @@ public class Person implements Serializable{
 	}
 
 	
-	public Person(String firstname, String lastname, String email, Collection<Sport> sports) {
+	public Person(String firstname, String lastname, String email,  String password, Collection<Sport> sports) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.sports = sports;
+		this.password = password;
 	}
 
 

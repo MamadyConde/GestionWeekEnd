@@ -80,8 +80,12 @@ public class PersonMetierImpl implements PersonMetier {
 	public void addRoleToPerson(String email, String roleName) {
 		List<PersRole> role = roleRepository.findByRoleName(roleName);
 		Person p =  personRepository.findByEmail(email);
+		List<Person> listpersrole= personRepository.findByRolesAndEmail(role, email);
+		if (listpersrole.size()>0) {
+			return;
+		}else {
 		p.getRoles().addAll(role);
-		
+		}
 	}
 
 	@Override
