@@ -49,7 +49,7 @@ public class PersonMetierImpl implements PersonMetier {
 
 	@Override
 	public Person updatePerson(Person p) {
-		System.out.println(p.getId());
+		//System.out.println(p.getId());
 		return personRepository.save(p);
 	}
 

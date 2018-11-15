@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 @Entity
@@ -64,7 +65,7 @@ public class Sport implements Serializable{
 	}
 
 
-
+	
 	public void setLocality(Collection<Locality> locality) {
 		this.locality = locality;
 	}

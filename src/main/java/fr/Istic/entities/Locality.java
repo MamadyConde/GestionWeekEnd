@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 
@@ -22,6 +23,9 @@ public class Locality implements Serializable{
 	
 	@ManyToMany(mappedBy="locality")
 	private Collection<Sport> sports;
+	
+	@ManyToMany(mappedBy ="locality")
+	private Collection<Person> person;
 	
 	public Locality() {
 		super();
@@ -46,6 +50,16 @@ public class Locality implements Serializable{
 	}
 
 
+	@JsonIgnore //pour la personne
+	public Collection<Person> getPerson() {
+		return person;
+	}
+
+	//@JsonSetter
+	public void setPerson(Collection<Person> person) {
+		this.person = person;
+	}
+
 
 	public String getCity() {
 		return city;
@@ -62,7 +76,7 @@ public class Locality implements Serializable{
 		return sports;
 	}
 
-
+	
 	public void setSports(Collection<Sport> sports) {
 		this.sports = sports;
 	}

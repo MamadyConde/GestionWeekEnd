@@ -26,7 +26,7 @@ public class SportRestService {
 	
 	@PostMapping(value="/Add")
 	public Sport saveSport(@RequestBody Sport s) {
-System.out.println("sssss "+s);
+//System.out.println("sssss "+s);
 		return sportMetier.saveSport(s);
 	}
 	@GetMapping(value="/List")
