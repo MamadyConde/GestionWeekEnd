@@ -50,6 +50,7 @@ public class PersonMetierImpl implements PersonMetier {
 	public void deletePerson(Long id) {
 		
 		 personRepository.delete(getPersonByid(id));
+		
 	}
 
 }

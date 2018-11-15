@@ -26,6 +26,9 @@ public class Person implements Serializable{
 	
 	@ManyToMany
 	private Collection<Sport> sports;
+	
+	@ManyToMany
+	private Collection<Locality> locality;
 
 	
 	public Person() {
@@ -33,12 +36,23 @@ public class Person implements Serializable{
 	}
 
 	
-	public Person(String firstname, String lastname, String email, Collection<Sport> sports) {
+/*	public Person(String firstname, String lastname, String email, Collection<Sport> sports) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.sports = sports;
+	}
+*/
+
+	public Person(String firstname, String lastname, String email, Collection<Sport> sports,
+			Collection<Locality> locality) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.sports = sports;
+		this.locality = locality;
 	}
 
 
@@ -63,6 +77,16 @@ public class Person implements Serializable{
 	public String getLastname() {
 		return lastname;
 	}
+
+	public Collection<Locality> getLocality() {
+		return locality;
+	}
+
+
+	public void setLocality(Collection<Locality> locality) {
+		this.locality = locality;
+	}
+
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
