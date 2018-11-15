@@ -28,8 +28,8 @@ public class GestionWeekEndApplication implements CommandLineRunner{
 	}
 	@Override
 	public void run(String... args) throws Exception {
-		personMetier.savePerson(new Person("admin","admin","a@gmail","12",null));
-		personMetier.savePerson(new Person("user","user","u@gmail","12",null));
+		personMetier.savePerson(new Person("admin","admin","a@gmail","12",null,null));
+		personMetier.savePerson(new Person("user","user","u@gmail","12",null,null));
 		personMetier.saveRole(new PersRole("ADMIN"));
 		personMetier.saveRole(new PersRole("USER"));
 		personMetier.addRoleToPerson("a@gmail", "ADMIN");

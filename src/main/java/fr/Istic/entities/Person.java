@@ -37,25 +37,16 @@ public class Person implements Serializable{
 	
 	@ManyToMany
 	private Collection<Sport> sports;
-
+	@ManyToMany
+	private Collection<Locality> locality;
 	
 	public Person() {
 		super();
 	}
 
 	
-	public Person(String firstname, String lastname, String email,  String password, Collection<Sport> sports) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.email = email;
-		this.sports = sports;
-		this.password = password;
-	}
-
-
 	public Person(String firstname, String lastname, String email, String password, Collection<PersRole> roles,
-			Collection<Sport> sports) {
+			Collection<Sport> sports, Collection<Locality> locality) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -63,6 +54,21 @@ public class Person implements Serializable{
 		this.password = password;
 		this.roles = roles;
 		this.sports = sports;
+		this.locality = locality;
+	}
+
+
+
+
+	public Person(String firstname, String lastname, String email, String password, Collection<Sport> sports,
+			Collection<Locality> locality) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.sports = sports;
+		this.locality = locality;
 	}
 
 
@@ -126,6 +132,14 @@ public class Person implements Serializable{
 
 	public void setRoles(Collection<PersRole> roles) {
 		this.roles = roles;
+	}
+	public Collection<Locality> getLocality() {
+		return locality;
+	}
+
+
+	public void setLocality(Collection<Locality> locality) {
+		this.locality = locality;
 	}
 
 
