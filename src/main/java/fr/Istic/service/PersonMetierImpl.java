@@ -17,11 +17,11 @@ import fr.Istic.entities.PersRole;
 import fr.Istic.entities.Person;
 import fr.Istic.entities.Sport;
 
-@Service //pour que spring puisse la reconnaitre comme un bean-spring
+@Service 
 @Transactional
 
 public class PersonMetierImpl implements PersonMetier {
-	@Autowired  //injection de dependance de l'interface PersonDao par spring
+	@Autowired  
 	private PersonRepository personRepository;
 	@Autowired
 	private SportRepository sportRepository;

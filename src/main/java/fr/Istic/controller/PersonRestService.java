@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.Istic.entities.Person;
 import fr.Istic.service.PersonMetier;
 
-@RestController//par default JSON
+@RestController
 @CrossOrigin("*")
 @RequestMapping("/Person")
 public class PersonRestService {
@@ -30,9 +30,8 @@ public class PersonRestService {
 	}
 	@PostMapping(value="/Add")
 	public Person saveClient(@RequestBody Person p) {
-		 //personMetier.savePerson(p);
 		 personMetier.savePerson(p);
-		 personMetier.addRoleToPerson(p.getEmail(), "USER");//par defaut role user
+		 personMetier.addRoleToPerson(p.getEmail(), "USER");
 		 return p;
 	}
 
@@ -40,7 +39,9 @@ public class PersonRestService {
 	@PutMapping(value="/Update/{id}")
 	public Person update(@PathVariable Long id,@RequestBody Person p) {
 		p.setId(id);
-		return personMetier.updatePerson(p);
+		 personMetier.updatePerson(p);
+		 personMetier.addRoleToPerson(p.getEmail(), "USER");
+		 return p;
 	}
 
 	@GetMapping(value="/One/{id}")
@@ -51,6 +52,11 @@ public class PersonRestService {
 	public boolean deletePerson( @PathVariable("id") Long id) {
 		personMetier.deletePerson(id);
 		return true;
+	}
+	@GetMapping(value="/Chercher/{email}")
+	public Person getPersonByemail(@PathVariable ("email") String email) {
+		
+		return personMetier.findPersonByEmail(email);
 	}
 	
 	

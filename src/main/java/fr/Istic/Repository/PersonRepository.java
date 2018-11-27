@@ -15,4 +15,5 @@ public interface PersonRepository extends JpaRepository<Person,Long>{
    public Person findByEmail(String email);
 List<Person> findByRolesAndEmail(List<PersRole> role, String email);
 
+
 }

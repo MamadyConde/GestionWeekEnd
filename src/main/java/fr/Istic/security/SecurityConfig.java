@@ -35,12 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("7");
+		
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		//http.formLogin(); 
-		http.authorizeRequests().antMatchers("/login/**","/Person/Add/**").permitAll();
+		http.authorizeRequests().antMatchers("/login/**","/Person/Add/**","/Person/One/**").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/Person/List/**").hasAuthority("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/Person/Update/").hasAuthority("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
 		http.addFilter(new JWTAuthentificationFilter(authenticationManager()));
 		http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

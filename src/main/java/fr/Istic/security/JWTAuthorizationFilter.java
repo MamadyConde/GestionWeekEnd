@@ -26,7 +26,8 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 	protected void doFilterInternal(HttpServletRequest request, 
 			HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		response.addHeader("Access-Control-Allow-Origin", "*");//authoriser tout les domaines d'envoyer les rqt
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
 		response.addHeader("Access-Control-Allow-Headers", 
 				"Origin,Accept,X-Requested-With,Content-type,"
 				+ "Access-Control-Request-Method,"
@@ -38,28 +39,38 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 				+ "Access-Control-Allows-Credentials,Authorization");
 		
 		String jwt=request.getHeader(SecurityConstants.HEADER_STRING);
-		System.out.println("jwt 4 "+jwt);
-		if(jwt==null || !jwt.startsWith(SecurityConstants.TOKEN_PREFIX)) {
-			filterChain.doFilter(request,response);
-			return; 
+		
+		
+		if(request.getMethod().equals("OPTIONS")) {
+			System.out.println("OPTIONS");
+			response.setStatus(HttpServletResponse.SC_OK);
+			
 		}
-		Claims claims = Jwts.parser()
-				.setSigningKey(SecurityConstants.SECRET)
-				.parseClaimsJws(jwt.replace(SecurityConstants.TOKEN_PREFIX,""))
-				.getBody();
-			System.out.println(" 5");
-				String email=claims.getSubject();
-				ArrayList<Map<String,String>> roles = (ArrayList<Map<String,String>>)
-						claims.get("roles");
-				Collection<GrantedAuthority> authorities =new ArrayList<>();
-				roles.forEach(r->{
-					authorities.add(new SimpleGrantedAuthority(r.get("authority")));
-				});
-				UsernamePasswordAuthenticationToken authenticationToken = 
-							new UsernamePasswordAuthenticationToken(email,null, authorities);
-				SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-				filterChain.doFilter(request, response);
-				System.out.println("8");
+		else {
+			if(jwt==null || !jwt.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+				filterChain.doFilter(request,response);
+				return; 
+			}
+			Claims claims = Jwts.parser()
+					.setSigningKey(SecurityConstants.SECRET)
+					.parseClaimsJws(jwt.replace(SecurityConstants.TOKEN_PREFIX,""))
+					.getBody();
+				System.out.println(" 5");
+					String email=claims.getSubject();
+					ArrayList<Map<String,String>> roles = (ArrayList<Map<String,String>>)
+							claims.get("roles");
+					Collection<GrantedAuthority> authorities =new ArrayList<>();
+					roles.forEach(r->{
+						authorities.add(new SimpleGrantedAuthority(r.get("authority")));
+					});
+					UsernamePasswordAuthenticationToken authenticationToken = 
+								new UsernamePasswordAuthenticationToken(email,null, authorities);
+					SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+					filterChain.doFilter(request, response);
+					
+			
+		}
+		
 	}
 
 }

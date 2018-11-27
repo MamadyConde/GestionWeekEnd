@@ -19,12 +19,8 @@ public class PersonDetailService implements UserDetailsService {
 	private PersonMetier personMetier;
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		System.out.println("6");
-		System.out.println("eeeeeeee "+email);
 		Person person = personMetier.findPersonByEmail(email);
-		System.out.println("JJJJJJJJJJ "+person);
 		Collection<GrantedAuthority> authorities=new ArrayList<>();
-		//System.out.println("rrrrrrrrrrrrr "+person.getRoles());
 		person.getRoles().forEach(r->{
 			authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
 		});
