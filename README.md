@@ -5,8 +5,10 @@ L'application est developpé avec la tecnologie Spring Data Jpa qui créée auto
 Dans le main du package fr.Istic, le compte de l' Admin est automatique inseré dans la base des données au lancement du serveur.<br><br>
 
 le Front End nommé ClientGestionWeekEnd est devéloppé en Angular 6. <br>
+L'admin se connecte, avec son compte créé dans le Back End, et insert d'abord les lieux et les sports liés aux lieux.
+
 Au lancement de l'application le nouveau utilisateur s'inscrit,avec un role de user,puis se connecte afin qu'il puisse choisir son sport et les lieux où y sont  pratiqués le sport. <br>
 
-L'admin insert les lieux et les sports liés aux lieux.
+
 
 
