@@ -6,4 +6,7 @@ Dans le main du package fr.Istic, le compte de l' Admin est automatique inseré 
 
 le Front End nommé ClientGestionWeekEnd est devéloppé en Angular 6. <br>
 Au lancement de l'application le nouveau utilisateur s'inscrit,avec un role de user,puis se connecte afin qu'il puisse choisir son sport et les lieux où y sont  pratiqués le sport. <br>
+
 L'admin insert les lieux et les sports liés aux lieux.
+
+
