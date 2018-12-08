@@ -11,16 +11,14 @@ import fr.Istic.entities.Sport;
 public class SportMetierImpl implements SportMetier{
 	
 	@Autowired
-	private SportRepository sportRepository; //faire appel à DAO
+	private SportRepository sportRepository; 
 	@Override
 	public Sport saveSport(Sport s) {
 		List <Sport> list =sportRepository.findByName(s.getName());
 		if(list.size()>0) {
 			return s;
 		}else {
-//			Sport _sport=sportRepository.save(new Sport(s.getName(),s.getLevel(),s.getLocality()));
-//			
-//			return _sport;
+
 		return sportRepository.save(s);
 		}
 	}

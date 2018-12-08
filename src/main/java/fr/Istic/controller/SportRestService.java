@@ -35,7 +35,8 @@ System.out.println("sssss "+s);
 	}
 	@PutMapping(value="/Update/{id}")
 	public Sport Update(@PathVariable Long id,@RequestBody Sport s) {
-		s.setId(id);
+		//s.setId(id);
+		System.out.println("sport "+s);
 		return sportMetier.Update(s);
 	}
 	@GetMapping(value="/One/{id}")
